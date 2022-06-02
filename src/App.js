@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./css/style.min.css";
 import { Header } from "./components/Header";
 import { Note } from "./components/Note";
-import notesData from "./json/notes.json";
 
 function App() {
-  const [notes, setNotes] = useState(notesData || []);
+  const notesData = JSON.parse(localStorage.getItem("notes-list")) || [];
+
+  const [notes, setNotes] = useState(notesData);
   const [filter, setFilter] = useState("");
   const [filteredNotes, setFilteredNotes] = useState([]);
 
@@ -20,6 +21,10 @@ function App() {
 
     setFilteredNotes(filtered);
   }, [notes, filter]);
+
+  useEffect(() => {
+    localStorage.setItem("notes-list", JSON.stringify(notes));
+  }, [notes]);
 
   const filterChange = (filterValue) => {
     setFilter(filterValue);
