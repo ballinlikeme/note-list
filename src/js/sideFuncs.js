@@ -19,7 +19,7 @@ export const getTags = (id) => {
   const words = text.split(" ");
   let tags = words.filter((word) => word.includes("#"));
 
-  tags.map((t) => {
+  tags.forEach((t) => {
     if (t.includes(" ")) {
       tags = tags.filter((tag) => tag !== t);
       const tempArr = t.split(" ");

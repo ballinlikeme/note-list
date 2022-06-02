@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./css/style.min.css";
 import { Header } from "./components/Header";
-import { useState, useEffect } from "react";
 import { Note } from "./components/Note";
+import notesData from "./json/notes.json";
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(notesData || []);
   const [filter, setFilter] = useState("");
   const [filteredNotes, setFilteredNotes] = useState([]);
 
