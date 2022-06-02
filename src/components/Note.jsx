@@ -26,7 +26,7 @@ export const Note = ({ text, id, removeNote }) => {
   useEffect(() => {
     highlight(id);
     setTags(getTags(id).join(", "));
-  }, [text]);
+  }, [text, id]);
 
   return (
     <li className="note-list__item">
